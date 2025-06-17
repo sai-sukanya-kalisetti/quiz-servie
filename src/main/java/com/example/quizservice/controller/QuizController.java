@@ -35,12 +35,20 @@ public class QuizController {
     	return "working";
     }
     
+    /* POST http://localhost:8090/quiz/create
+     * {
+    "category": "android",
+    "numOfQuestions": "3",
+    "title": "Android_Quiz"
+	}
+     * */
     @PostMapping("/create")
     public ResponseEntity<String> createQuiz(@RequestBody QuizDTO quizDto){
         return quizService.createQuiz(quizDto.getCategory(),quizDto.getNumOfQuestions(),quizDto.getTitle());
     }
     
-    
+    /*GET http://localhost:8090/quiz/get/1
+     * */
     @GetMapping("/get/{id}")
     public ResponseEntity<List<QuestionWrapper>> getQuizQuestions(@PathVariable Integer id){
         return quizService.getQuizQuestions(id);
